@@ -47,7 +47,7 @@ def calcular_evolucao_peso(peso_atual, peso_alvo, deficit_calorico, tdee):
     return df, semanas_necessarias
 
 def main():
-    st.title("Previsão de Peso")
+    st.title("Previsão para Seu Peso Alvo")
     
     # Carregar animação Lottie
     lottie_url = "https://lottie.host/7cd3da48-3e96-456b-ba7f-c9ea4caf0ece/xhcBXANzWS.json"
@@ -95,11 +95,11 @@ def main():
     st.plotly_chart(fig, use_container_width=True)
     
     # Detalhes do Plano de Emagrecimento
-    st.subheader("Detalhes do Plano de Emagrecimento")
-    calorias_necessarias = tdee - (deficit_calorico / 100) * tdee
+    st.subheader("Plano de Consumo Calórico")
+    calorias_necessarias = tdee * (1 - deficit_calorico / 100)
     st.write(f"Déficit calórico selecionado: {deficit_calorico}%")
     st.write(f"Semanas necessárias para atingir o peso alvo: {int(semanas_necessarias)}")
-    st.write(f"Calorias diárias recomendadas: {calorias_necessarias:.2f}")
+    st.write(f"Calorias diárias com o déficit: {calorias_necessarias:.2f}")
     st.write(f"Para atingir seu peso alvo de {peso_alvo:.1f} kg, você precisará de um déficit de {deficit_calorico}% para atingir seu peso alvo em aproximadamente {int(semanas_necessarias)} semanas.")
 
 if __name__ == "__main__":
